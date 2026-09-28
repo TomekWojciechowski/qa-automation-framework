@@ -1,0 +1,21 @@
+services:
+  chrome:
+    image: selenium/standalone-chrome:latest
+    shm_size: 2gb
+    ports:
+      - "4444:4444"
+    healthcheck:
+      test: ["CMD", "/opt/bin/check-grid.sh", "--host", "0.0.0.0", "--port", "4444"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+  tests:
+    build: .
+    depends_on:
+      chrome:
+        condition: service_healthy
+    environment:
+      REMOTE_URL: http://chrome:4444/wd/hub
+    volumes:
+      - ./target:/app/target

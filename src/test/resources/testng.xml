@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="QA Automation Framework" parallel="methods" thread-count="3" verbose="1">
+    <test name="UI tests">
+        <packages>
+            <package name="dev.tomasz.qa.tests.ui"/>
+        </packages>
+    </test>
+    <test name="API tests">
+        <packages>
+            <package name="dev.tomasz.qa.tests.api"/>
+        </packages>
+    </test>
+</suite>
