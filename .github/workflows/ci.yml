@@ -23,10 +23,7 @@ jobs:
 
       - name: Generate Allure report
         if: always()
-        uses: simple-elf/allure-report-action@v1.9
-        with:
-          allure_results: target/allure-results
-          allure_report: allure-report
+        run: npx --yes allure-commandline generate target/allure-results -o allure-report --clean
 
       - name: Upload Allure report
         if: always()
