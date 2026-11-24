@@ -1,8 +1,11 @@
-# QA Automation Framework
+# QAForge: UI and API test automation in Java
 
-UI and API test automation in Java. It tests a public demo web shop with Selenium and a public booking REST API with REST Assured, runs in parallel, and produces Allure reports. The suite runs locally, in Docker and in CI.
+QAForge is my Java test automation framework. It tests a public demo web shop with Selenium and a public booking REST API with REST Assured, runs in parallel, and produces Allure reports. The suite runs locally, in Docker and in CI.
 
 [![Tests](https://github.com/TomekWojciechowski/qa-automation-framework/actions/workflows/ci.yml/badge.svg)](https://github.com/TomekWojciechowski/qa-automation-framework/actions/workflows/ci.yml)
+[![Allure report](https://img.shields.io/badge/Allure-latest%20report-orange)](https://tomekwojciechowski.github.io/qa-automation-framework/)
+
+**[Open the latest Allure report](https://tomekwojciechowski.github.io/qa-automation-framework/)**: steps, severity, screenshots on failure and full HTTP request and response logs for the API tests. It is rebuilt on every push to `main` and every night.
 
 ## Tech stack
 
@@ -83,9 +86,9 @@ docker compose up --build --abort-on-container-exit
 
 ### CI
 
-- `.github/workflows/ci.yml` runs the suite on every push and pull request and stores the Allure report as an artifact.
+- `.github/workflows/ci.yml` runs the suite on every push, every pull request and every night (the systems under test are live public sites). It stores the Allure report as an artifact and publishes the report from `main` to GitHub Pages.
 - `.gitlab-ci.yml` runs the suite in the Maven image with a Selenium Chrome service container and keeps the Allure results and JUnit report.
 
 ## Author
 
-Tomasz Wojciechowski, Test Automation Engineer (Java, Selenium, CI/CD)
+Tomasz Wojciechowski, Test Automation Engineer (Python, Java, SQL). See also [api-testing-python](https://github.com/TomekWojciechowski/api-testing-python) for API tests in Python with database checks.

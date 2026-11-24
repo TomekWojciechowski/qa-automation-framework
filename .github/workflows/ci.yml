@@ -5,6 +5,12 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+  # The suite tests live public sites, so a nightly run shows whether it still passes today.
+  schedule:
+    - cron: "17 3 * * *"
+
+permissions:
+  contents: read
 
 jobs:
   test:
@@ -32,3 +38,24 @@ jobs:
           name: allure-report
           path: allure-report
           retention-days: 14
+
+      - name: Prepare report for GitHub Pages
+        if: always() && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: allure-report
+
+  # Publishes the latest Allure report from main, so it can be opened without downloading anything.
+  publish-report:
+    needs: test
+    if: always() && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4
