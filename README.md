@@ -1,6 +1,6 @@
-# QAForge: UI and API test automation in Java
+# QA Automation Framework
 
-QAForge is my Java test automation framework. It tests a public demo web shop with Selenium and a public booking REST API with REST Assured, runs in parallel, and produces Allure reports. The suite runs locally, in Docker and in CI.
+UI and API test automation in Java. It tests a public demo web shop with Selenium and a public booking REST API with REST Assured, runs in parallel, and produces Allure reports. The suite runs locally, in Docker and in CI.
 
 [![Tests](https://github.com/TomekWojciechowski/qa-automation-framework/actions/workflows/ci.yml/badge.svg)](https://github.com/TomekWojciechowski/qa-automation-framework/actions/workflows/ci.yml)
 [![Allure report](https://img.shields.io/badge/Allure-latest%20report-orange)](https://tomekwojciechowski.github.io/qa-automation-framework/)
